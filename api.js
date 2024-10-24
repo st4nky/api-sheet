@@ -4,7 +4,7 @@ let filtro = 'todos'; // Variável global para o filtro
 async function dashboard() {
     const apiKey = 'AIzaSyDPczADNpxiAQhW2IuqBJOkNyMM0RbiQ18';
     const spreadsheetId = '1oh9ABtUGS9YBzZ698bc93DKlsKkJ142CjhcULfv9z6c';
-    const range = 'A:F'; // Atualizado para pegar até a coluna F
+    const range = 'A:F';
 
     async function fetchSpreadsheetData() {
         const response = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?key=${apiKey}`);
@@ -19,7 +19,7 @@ async function dashboard() {
                 nomeProcedimento: row[4],  // Nome do Procedimento
                 situacao: row[5]           // Situação
             }));
-            console.log(cleiton); // Verifique se os dados estão corretos
+            console.log(cleiton); // Verifica se os dados estão corretos
         } else {
             console.error('Nenhum dado encontrado na planilha.');
         }
@@ -158,10 +158,10 @@ function baixarCSV(alunos) {
     const link = document.createElement("a");
     link.setAttribute("href", encodedUri);
     link.setAttribute("download", "alunos.csv");
-    document.body.appendChild(link); // Required for Firefox
+    document.body.appendChild(link); 
 
-    link.click(); // This will download the data file named "alunos.csv"
-    document.body.removeChild(link); // Remove the link after downloading
+    link.click(); 
+    document.body.removeChild(link);
 }
 
 dashboard();
